@@ -6,9 +6,9 @@
             <field name="model">student.student</field>
             <field name="priority" eval="8" />
             <field name="arch" type="xml">
-                <tree string="Student">
-                    <field name="name" />
-                    <field name="last_name" />
+                <tree string="Student" editable="bottom">
+                    <field name="name" widget="handle"/>
+                    <field name="last_name" widget="color_picker" />
                     <field name="student_gender" />
                     <field name="student_dob" />
                     <field name="major_id"/>
