@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_course_tree" model="ir.ui.view">
+            <field name="name">student.course.tree</field>
+            <field name="model">student.course</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Course">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_course_form" model="ir.ui.view">
+            <field name="name">student.course.form</field>
+            <field name="model">student.course</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Course">
+                    <sheet>
+                        <field name="name"  required="1" placeholder="Course Name" />
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_view_courses">
+            <field name="name">Courses</field>
+            <field name="res_model">student.course</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create new course
+                </p>
+            </field>
+        </record>
+        <menuitem id="school_course" action="action_view_courses" parent="school_student"
+                  name="Courses" sequence="2"/>
+    </data>
+</odoo>

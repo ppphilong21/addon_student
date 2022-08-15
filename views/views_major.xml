@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_major_tree" model="ir.ui.view">
+            <field name="name">student.major.tree</field>
+            <field name="model">student.major</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Major">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_major_form" model="ir.ui.view">
+            <field name="name">student.major.form</field>
+            <field name="model">student.major</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Major">
+                    <sheet>
+                        <field name="name"  required="1" placeholder="Major Name" />
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_view_majors">
+            <field name="name">Majors</field>
+            <field name="res_model">student.major</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create new major
+                </p>
+            </field>
+        </record>
+        <menuitem id="school_major" action="action_view_majors" parent="school_student"
+                  name="Majors" sequence="1"/>
+    </data>
+</odoo>

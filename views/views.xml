@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_student_tree" model="ir.ui.view">
+            <field name="name">student.student.tree</field>
+            <field name="model">student.student</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Student">
+                    <field name="name" />
+                    <field name="last_name" />
+                    <field name="student_gender" />
+                    <field name="student_dob" />
+                    <field name="major_id"/>
+                    <field name="course_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_student_form" model="ir.ui.view">
+            <field name="name">student.student.form</field>
+            <field name="model">student.student</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Student">
+                    <sheet>
+                        <field name="photo" widget="image" class="oe_left oe_avatar" />
+                        <div class="oe_title">
+                            <h1>
+                                <table>
+                                    <tr>
+                                        <td style="padding-right:10px;"><field name="name" required="1" placeholder="First Name" /></td>
+                                        <td style="padding-right:10px;"><field name="last_name" placeholder="Last Name" /></td>
+                                    </tr>
+                                </table>
+                            </h1>
+                        </div>
+                        <notebook colspan="5">
+                            <page name="personal_information"
+                                string="Personal Information">
+                                <group col="5" colspan="5"
+                                    name="personal_detail">
+                                    <field name="major_id"/>
+                                    <field name="course_id"/>
+                                    <field name="student_gender" />
+                                    <field name="student_dob" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_view_students">
+            <field name="name">Students</field>
+            <field name="res_model">student.student</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create new student
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_school" name="School Manager" />
+        <menuitem id="school_student" name="Students" parent="menu_school"
+                  action="action_view_students"  />
+        <menuitem id="school_major" name="Majors" parent="school_student"
+                 />
+        <menuitem id="school_course" name="Courses" parent="school_student"
+                 />
+
+
+    </data>
+</odoo>
