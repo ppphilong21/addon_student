@@ -1,2 +1,11 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_student_addon_student_addon,student_addon.student_addon,model_student_addon_student_addon,,1,0,0,0
+access_student_user,student_user,model_student_student,group_student_user,1,1,0,0
+access_student_manager,student_manager,model_student_student,group_student_manager,1,1,1,1
+access_class_user,class_user,model_student_class,group_student_user,1,0,0,0
+access_class_manager,class_manager,model_student_class,group_student_manager,1,1,1,1
+access_course_user,course_user,model_student_course,group_student_user,1,0,0,0
+access_course_manager,course_manager,model_student_course,group_student_manager,1,1,1,1
+access_major_user,major_user,model_student_major,group_student_user,1,0,0,0
+access_major_manager,major_manager,model_student_major,group_student_manager,1,0,1,0
+access_subject_user,subject_user,model_student_subject,group_student_user,1,0,0,0
+access_subject_manager,subject_manager,model_student_subject,group_student_manager,1,1,1,1

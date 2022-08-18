@@ -4,7 +4,7 @@
         <record id="view_course_tree" model="ir.ui.view">
             <field name="name">student.course.tree</field>
             <field name="model">student.course</field>
-            <field name="priority" eval="8" />
+            <field name="priority" eval="8"/>
             <field name="arch" type="xml">
                 <tree string="Course">
                     <field name="name"/>
@@ -14,11 +14,16 @@
         <record id="view_course_form" model="ir.ui.view">
             <field name="name">student.course.form</field>
             <field name="model">student.course</field>
-            <field name="priority" eval="8" />
+            <field name="priority" eval="8"/>
             <field name="arch" type="xml">
                 <form string="Course">
                     <sheet>
-                        <field name="name"  required="1" placeholder="Course Name" />
+                        <field name="name" required="1" placeholder="Course Name"/>
+                        <field name="student_ids">
+                            <tree>
+                                <field name="name"></field>
+                            </tree>
+                        </field>
                     </sheet>
                 </form>
             </field>
@@ -35,6 +40,6 @@
             </field>
         </record>
         <menuitem id="school_course" action="action_view_courses" parent="school_student"
-                  name="Courses" sequence="2"/>
+                  name="Courses" sequence="3"/>
     </data>
 </odoo>

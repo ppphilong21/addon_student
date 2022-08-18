@@ -1,0 +1,74 @@
+
+
+   """
+    #read: đọc
+   def action_read(self):
+        read_record = self.env['student.student'].browse(2)
+        if read_record.exists():
+            print(read_record.read())
+    """
+
+    """
+    #write: ghi đè
+     def action_write(self):
+        update_vals_field = self.env['student.student'].browse(2) #browse: Trả về một recordset các records dựa theo danh sách ids
+        if update_vals_field.exists(): #kiểm tra xem có tồn tại không
+            vals = {
+                'name': 'New name'
+            }
+            update_vals_field.write(vals)
+    """
+
+
+    """
+    #Create
+         def action_create(self):
+            vals = vals = {
+                'name': 'long',
+                'last_name': 'Check',
+            }
+            self.env['student.student'].create(vals)
+    """
+
+
+"""
+    #search, and search with condition(or[()|()], and[(),()], all)
+    #search_count: tìm sau trả ra kết quả là số lượng mà thỏa mãn
+    def action_check_gender(self):
+        for vals in self:
+            student_gender_list = self.env['student.student'].search([('student_gender', '==', 'Male')])
+            print('studetn gender list',student_gender_list)
+
+    def action_confirm(self):
+        for vals in self:
+            student_list = self.env['student.student'].search([]) #search(all)
+            print('student list', student_list)
+
+"""
+
+ """
+ thay đổi
+ @api.onchange('major_id')
+    def check_change(self):
+        if self.major_id:
+            self.last_name = "Check OnChange"
+"""
+
+ràng buộc
+@api.constrains('name', 'last_name')
+    def _check_name(self):
+        if self.name == self.last_name:
+            print('đã truyền vô')
+            raise ValidationError("Fields name and last_name must be different")
+
+""""""
+
+ <!--
+                            <header>
+                            <button name="action_check_gender" type="object" string="Check Gender"/>
+                            <button name="action_confirm" type="object"  string="Confirm" />
+                            <button name="action_create" type="object" string="Create"/>
+                            <button name="action_write" type="object" string="Write"/>
+                            <button name="action_read" type="object" string="Read"/>
+                        </header>
+                        -->

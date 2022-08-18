@@ -6,15 +6,19 @@
             <field name="model">student.student</field>
             <field name="priority" eval="8" />
             <field name="arch" type="xml">
-                <tree string="Student" editable="bottom">
-                    <field name="name" widget="handle"/>
-                    <field name="last_name" widget="color_picker" />
+                <tree string="Student" >
+                    <field name="student_code"/>
+                    <field name="name" />
+                    <field name="last_name"/>
                     <field name="student_gender" />
                     <field name="student_dob" />
                     <field name="major_id"/>
                     <field name="course_id"/>
+                    <field name="student_state"/>
+                    <field name="student_class"/>
                 </tree>
             </field>
+
         </record>
         <record id="view_student_form" model="ir.ui.view">
             <field name="name">student.student.form</field>
@@ -22,6 +26,9 @@
             <field name="priority" eval="8" />
             <field name="arch" type="xml">
                 <form string="Student">
+                     <header>
+                        <field name="student_state" widget="statusbar" options="{'clickable': 1}"/>
+                    </header>
                     <sheet>
                         <field name="photo" widget="image" class="oe_left oe_avatar" />
                         <div class="oe_title">
@@ -30,6 +37,7 @@
                                     <tr>
                                         <td style="padding-right:10px;"><field name="name" required="1" placeholder="First Name" /></td>
                                         <td style="padding-right:10px;"><field name="last_name" placeholder="Last Name" /></td>
+                                        <td style="padding-right:10px;"><field name="student_code" placeholder="Student Code" /></td>
                                     </tr>
                                 </table>
                             </h1>
@@ -46,6 +54,8 @@
                                 </group>
                             </page>
                         </notebook>
+                        <field name="student_class"/>
+
                     </sheet>
                 </form>
             </field>
@@ -62,14 +72,15 @@
             </field>
         </record>
 
-        <menuitem id="menu_school" name="School Manager" />
-        <menuitem id="school_student" name="Students" parent="menu_school"
-                  action="action_view_students"  />
-        <menuitem id="school_major" name="Majors" parent="school_student"
-                 />
-        <menuitem id="school_course" name="Courses" parent="school_student"
-                 />
+         <menuitem id="school_student" name="Students"
+                  action="action_view_students"/>
+        <!-- -->
+        <menuitem id="menu_student" name="Students Information" parent="school_student"/>
 
+        <menuitem id="school_major" name="Majors" parent="menu_student"/>
+        <menuitem id="school_course" name="Courses" parent="menu_student"/>
+        <menuitem id="school_subject" name="Subjects" parent="menu_student"/>
+        <menuitem id="school_class" name="Classes" parent="menu_student"/>
 
     </data>
 </odoo>

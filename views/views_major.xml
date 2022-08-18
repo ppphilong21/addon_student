@@ -8,6 +8,8 @@
             <field name="arch" type="xml">
                 <tree string="Major">
                     <field name="name"/>
+                    <field name="major_code"/>
+
                 </tree>
             </field>
         </record>
@@ -19,6 +21,8 @@
                 <form string="Major">
                     <sheet>
                         <field name="name"  required="1" placeholder="Major Name" />
+                        <field name="major_code" required="1" placeholder="Major Code"/>
+                        <field name="subject_id"/>
                     </sheet>
                 </form>
             </field>
@@ -35,6 +39,6 @@
             </field>
         </record>
         <menuitem id="school_major" action="action_view_majors" parent="school_student"
-                  name="Majors" sequence="1"/>
+                  name="Majors" sequence="2"/>
     </data>
 </odoo>

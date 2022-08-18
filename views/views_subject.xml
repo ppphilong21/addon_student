@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_subject_tree" model="ir.ui.view">
+            <field name="name">student.subject.tree</field>
+            <field name="model">student.subject</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Subject">
+                    <field name="name"/>
+                    <field name="subject_code"/>
+                    <field name="major_id"/>
+                    <field name="subject_class"/>
+                    <field name="subject_state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_subject_form" model="ir.ui.view">
+            <field name="name">student.subject.form</field>
+            <field name="model">student.subject</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Subject">
+                    <header>
+                        <field name="subject_state" widget="statusbar" options="{'clickable': '1'}"/>
+                    </header>
+                    <sheet>
+                        <div style="display: flex; justify-content: space-around; ">
+                            <div style="display: flex; flex-direction:column; align-content: space-between;">
+                                <field name="name" required="1" placeholder="Subject Name" />
+                                <field name="subject_code" required="1" placeholder="Subject Code" />
+                            </div>
+                            <div style="display: flex; flex-direction:column; align-content: space-between;">
+                                <field name="major_id" required="1" placeholder="Major Name" />
+                                <field name="subject_class" placeholder="Class Student" />
+                            </div>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_view_subjects">
+            <field name="name">Subjects</field>
+            <field name="res_model">student.subject</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create new subject
+                </p>
+            </field>
+        </record>
+        <menuitem id="school_subject" action="action_view_subjects" parent="school_student"
+                  name="Subjects" sequence="1"/>
+    </data>
+</odoo>
