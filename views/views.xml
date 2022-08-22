@@ -7,7 +7,7 @@
             <field name="priority" eval="8" />
             <field name="arch" type="xml">
                 <tree string="Student" >
-                    <field name="student_code"/>
+                    <field name="student_id"/>
                     <field name="name" />
                     <field name="last_name"/>
                     <field name="student_gender" />
@@ -18,7 +18,6 @@
                     <field name="student_class"/>
                 </tree>
             </field>
-
         </record>
         <record id="view_student_form" model="ir.ui.view">
             <field name="name">student.student.form</field>
@@ -27,7 +26,8 @@
             <field name="arch" type="xml">
                 <form string="Student">
                      <header>
-                        <field name="student_state" widget="statusbar" options="{'clickable': 1}"/>
+                         <button id="button_confirm" name="action_confirm_write" string="Confirm" type="object"/>
+                        <field name="student_state"  widget="statusbar"  options="{'clickable': 1}" type="object"/>
                     </header>
                     <sheet>
                         <field name="photo" widget="image" class="oe_left oe_avatar" />
@@ -37,7 +37,7 @@
                                     <tr>
                                         <td style="padding-right:10px;"><field name="name" required="1" placeholder="First Name" /></td>
                                         <td style="padding-right:10px;"><field name="last_name" placeholder="Last Name" /></td>
-                                        <td style="padding-right:10px;"><field name="student_code" placeholder="Student Code" /></td>
+                                        <td style="padding-right:10px;"><field name="student_id" placeholder="Student Code" /></td>
                                     </tr>
                                 </table>
                             </h1>
@@ -75,12 +75,11 @@
          <menuitem id="school_student" name="Students"
                   action="action_view_students"/>
         <!-- -->
-        <menuitem id="menu_student" name="Students Information" parent="school_student"/>
+        <menuitem id="menu_student" name="Students Information"  parent="school_student"/>
 
         <menuitem id="school_major" name="Majors" parent="menu_student"/>
         <menuitem id="school_course" name="Courses" parent="menu_student"/>
         <menuitem id="school_subject" name="Subjects" parent="menu_student"/>
         <menuitem id="school_class" name="Classes" parent="menu_student"/>
-
     </data>
 </odoo>

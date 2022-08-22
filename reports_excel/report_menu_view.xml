@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <menuitem
+                  parent="school_student"
+                  action="action_student_state_active_report"
+                  name="Report Student Active"
+                  groups="base.group_user"
+                  id="menu_action_student_state_active" sequence="10"/>
+    </data>
+</odoo>
+
+<!--
+
+-->

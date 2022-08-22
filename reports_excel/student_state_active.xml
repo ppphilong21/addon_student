@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!--StudentStateActiveReport -->
+        <record id="student_state_active_report_line_tree_view" model="ir.ui.view">
+            <field name="name">student.state.active.report.line.tree</field>
+            <field name="model">student.state.active.report.line</field>
+            <field name="arch" type="xml">
+                <tree string="Chi tiết" limit="20" create="false" edit="false" delete="false" editable="bottom">
+                    <field name="stt"></field>
+                    <field name="student_id"></field>
+                    <field name="state"></field>
+                </tree>
+            </field>
+        </record>
+
+        <record id="student_state_active_report_form_view" model="ir.ui.view">
+            <field name="name">student.state.active.report.form.view</field>
+            <field name="model">student.state.active.report</field>
+            <field name="arch" type="xml">
+                <form string=" Báo cáo chi tiết trạng thái Sinh Viên">
+                    <sheet>
+                        <div>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="student_ids" widget="many2many_tags" options="{'no_create': True}"/>
+<!--                                <field name="team_ids" widget="many2many_tags" options="{'no_create': True}"></field>-->
+                            </group>
+                             <group>
+                                <field name="from_date"/>
+                                <field name="to_date"></field>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="details" string="Chi tiết">
+                                <button string="Tải báo cáo" type="object" name="action_print"
+                                        class="btn btn-sm oe_button btn btn-primary" colspan="2">
+                                    <i class="fa fa-download"/>
+                                </button>
+                                 <button string="Xem trước" type="object" name="action_preview"
+                                        class="btn btn-sm oe_button btn btn-primary" colspan="1">
+                                    <i class="fa fa-download"/>
+                                </button>
+                                <field name="line_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_student_state_active_report" model="ir.actions.act_window">
+            <field name="name"> Báo cáo chi tiết trạng thái Sinh viên</field>
+            <field name="res_model">student.state.active.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">main</field>
+        </record>
+    </data>
+</odoo>

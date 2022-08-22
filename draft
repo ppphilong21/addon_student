@@ -72,3 +72,60 @@ ràng buộc
                             <button name="action_read" type="object" string="Read"/>
                         </header>
                         -->
+
+                        """from odoo import fields, models
+.py
+class CrmReport(models.TransientModel):
+    _name = 'crm.student.active.report'
+    student_info = fields.Many2one('res.users', string="Student Info")
+    student_state = fields.Selection([('active', 'Active'), ('inactive', 'Inactive')], string='Status')
+    current_date = fields.Date('Today', default=fields.Date.today)
+    def print_xls_report(self, cr, uid, ids, context=None):
+        data = self.read(cr, uid, ids)[0]
+        return {
+            'type': 'ir.actions.report.xml',
+            'report_name': 'crm_student_active_report.report_crm_student_active_report.xlsx',
+            'datas': data
+        }
+
+    def generate_xlsx_report(self, workbook, data, partners):
+        for vals in partners:
+            report_name = vals.name
+            sheet = workbook.add_worksheet(report_name[:31])
+            bold = workbook.add_format({
+                'bold': True
+            })
+            sheet.write(0, 0, vals.name, bold)
+
+"""
+
+
+
+
+                        views
+                        <?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+       <record id="view_crm_student_active_report" model="ir.ui.view">
+           <field name="name">Student Active Report</field>
+           <field name="model">crm.student.active.report</field>
+           <field name="arch" type="xml">
+               <form string="Choose your details">
+                   <group>
+                       <group>
+                           <field name="student_state"/>
+                       </group>
+                        <group>
+                           <field name="current_date"/>
+                       </group>
+                   </group>
+                   <footer>
+                       <button name="print_xls_report" string="Print Report" type="object"  class="oe_highlight"  />
+                                or
+                        <button string="Cancel" class="oe_link" special="cancel" groups="base.group_student_manager"/>
+                   </footer>
+               </form>
+           </field>
+       </record>
+    </data>
+</odoo>

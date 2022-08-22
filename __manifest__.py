@@ -31,6 +31,8 @@
         'views/views_major.xml',
         'views/views_subject.xml',
         'views/views_class.xml',
+        'reports_excel/student_state_active.xml',
+        'reports_excel/report_menu_view.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode

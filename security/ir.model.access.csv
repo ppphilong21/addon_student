@@ -9,3 +9,5 @@ access_major_user,major_user,model_student_major,group_student_user,1,0,0,0
 access_major_manager,major_manager,model_student_major,group_student_manager,1,0,1,0
 access_subject_user,subject_user,model_student_subject,group_student_user,1,0,0,0
 access_subject_manager,subject_manager,model_student_subject,group_student_manager,1,1,1,1
+access_student_active_manager,student_active_manager,model_student_state_active,group_student_manager,1,1,1,1
+access_student_active_user,student_active_user,model_student_state_active,group_student_user,1,0,0,0

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+   <template id="report_student">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.external_layout">
+                <div class="page">
+                   <div class="oe_structure"/>
+                        <div class="row container" style="display:flex; justify-items: space-between;">
+                        <div class="col-4" style="display:flex; flex-direction: column; align-items:space-between;">
+                            <div><strong>Student Name: <span t-field="o.name" style="color: black; font-weight: 600"/></strong></div>
+                            <div><strong>Student Code: <span t-field="o.student_code" style="color: black; font-weight: 600"/></strong></div>
+                        </div>
+                        <div class="col-8" style="display:flex; flex-direction: row">
+                            <div class="col-6" style="display:flex; flex-direction: column; align-items:space-between;">
+                                <div><strong>Student Major: <span t-field="o.major_id" style="color: black; font-weight: 600"/></strong></div>
+                                <div><strong>Student Course:<span t-field="o.course_id" style="color: black; font-weight: 600"/></strong></div>
+                            </div>
+                             <div class="col-6" style="display:flex; flex-direction: column; align-items:space-between;">
+                                <div><strong>Student Gender:<span t-field="o.student_gender" style="color: black; font-weight: 600"/></strong></div>
+                                 <div><strong>Student BirthDate:<span t-field="o.student_dob" style="color: black; font-weight: 600"/></strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="oe_structure"/>
+                    <!--
+                        <div class="oe_structure"/>
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th scope="col" t-fied="o."/>
+                                  <th scope="col" />
+                                  <th scope="col" />
+                                  <th scope="col" />
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th scope="row">1</th>
+                                  <td>Mark</td>
+                                  <td>Otto</td>
+                                  <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">2</th>
+                                  <td>Jacob</td>
+                                  <td>Thornton</td>
+                                  <td>@fat</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">3</th>
+                                  <td colspan="2">Larry the Bird</td>
+                                  <td>@twitter</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        <div class="oe_structure"/>
+                    -->
+                </div>
+            </t>
+        </t>
+    </t>
+</template>
+</odoo>
